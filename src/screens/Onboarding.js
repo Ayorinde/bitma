@@ -38,6 +38,8 @@ export default class Onboard extends Component {
                         image: <Onboard3 />,
                         title: 'Trade In Multiple Currency',
                         subtitle: <Onboard3Subtitle />,
+
+
                     },
 
                 ]}
@@ -46,6 +48,7 @@ export default class Onboard extends Component {
                 showNext={false}
                 bottomBarHighlight={false}
                 bottomBarHeight={80}
+                showDone={false}
             />);
     }
 }
