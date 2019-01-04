@@ -6,7 +6,7 @@ export default class Onboard2Subtitle extends Component {
     render() {
         return (
             <View >
-                <Text style={{ textAlign: "center", marginLeft: 80 }}>{'Lorem ipsum Get real time data on currency \n conversion rates'}</Text>
+                <Text style={{ textAlign: "center" }}>{'Lorem ipsum Get real time data on currency \n conversion rates'}</Text>
             </View>
         );
     }

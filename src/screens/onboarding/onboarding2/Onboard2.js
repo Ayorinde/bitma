@@ -9,7 +9,7 @@ export default class Onboard2 extends Component {
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Image source={onboardImg2} style={{ marginLeft: 80 }} />
+                <Image source={onboardImg2} style={{}} />
             </View>
         );
     }

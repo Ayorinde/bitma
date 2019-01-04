@@ -14,6 +14,9 @@ const thirdImg = require('../../assets/bitmama-splash3.png')
 
 
 export default class Onboard extends Component {
+    static navigationOptions = {
+        header: null,
+    }
     render() {
         return (
             <Onboarding
@@ -39,7 +42,7 @@ export default class Onboard extends Component {
 
                 ]}
                 imageContainerStyles={{ marginTop: 90 }}
-                titleStyles={{ marginTop: 80, marginLeft: 30 }}
+                titleStyles={{ marginTop: 90 }}
                 showNext={false}
                 bottomBarHighlight={false}
                 bottomBarHeight={80}
