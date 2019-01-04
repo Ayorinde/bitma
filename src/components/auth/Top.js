@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
+import { Button } from 'native-base'
 
 import { colors } from './../../constants/styles';
 
@@ -10,8 +11,14 @@ export default class Top extends Component {
         //top,bottom,overlay
         return (
             <View style={{ flex: 5, backgroundColor: colors.primary }} >
-                <Image source={logoWhite} style={{}} />
-                <View style={{}}>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <Image source={logoWhite} style={{}} />
+                </View>
+
+                <View style={{ flex: 1.5 }}>
+                    <Button transparent style={{ color: colors.light, paddingLeft: 60 }}>
+                        <Text>SIGN UP</Text>
+                    </Button>
 
                 </View>
             </View>
