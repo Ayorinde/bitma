@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
-import Onboard1 from './onboarding/Onboard1';
-import Onboard1Subtitle from './onboarding/Onboard1Subtitle';
-import Onboard2 from './onboarding/onboarding2/Onboard2';
-import Onboard2Subtitle from './onboarding/onboarding2/Onboard2Subtitle';
-import Onboard3 from './onboarding/onboarding3/Onboard3';
-import Onboard3Subtitle from './onboarding/onboarding3/Onboard3Subtitle';
-
-const firstImg = require('../../assets/bitmama-splash1.png')
-const secondImg = require('../../assets/bitmama-splash2.png')
-const thirdImg = require('../../assets/bitmama-splash3.png')
-
+import Onboard1 from './onboarding1/Onboard1';
+import Onboard1Subtitle from './onboarding1/Onboard1Subtitle';
+import Onboard2 from './onboarding2/Onboard2';
+import Onboard2Subtitle from './onboarding2/Onboard2Subtitle';
+import Onboard3 from './onboarding3/Onboard3';
+import Onboard3Subtitle from './onboarding3/Onboard3Subtitle';
 
 export default class Onboard extends Component {
     static navigationOptions = {
         header: null,
     }
     render() {
+        const { navigation } = this.props;
         return (
             <Onboarding
                 pages={[
@@ -37,7 +33,7 @@ export default class Onboard extends Component {
                         backgroundColor: '#fff',
                         image: <Onboard3 />,
                         title: 'Trade In Multiple Currency',
-                        subtitle: <Onboard3Subtitle />,
+                        subtitle: <Onboard3Subtitle nav={navigation} />,
 
 
                     },

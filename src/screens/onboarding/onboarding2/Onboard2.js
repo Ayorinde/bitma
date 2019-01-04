@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 
-const onboardImg2 = require('../../../../assets/bitmama-splash2.png');
+const onboardImg2 = require('../../../../assets/bitmama-splash2.png')
 
 
 

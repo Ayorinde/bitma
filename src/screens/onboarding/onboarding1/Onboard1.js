@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image } from 'react-native';
-import { Button, Text } from 'native-base';
+import { View, Image } from 'react-native';
 
-const onboardImg1 = require('../../../assets/bit-splash1.png')
-
-
+const onboardImg1 = require('../../../../assets/bit-splash1.png')
 
 export default class Onboard1 extends Component {
     render() {

@@ -4,10 +4,9 @@ import { Badge } from 'native-base';
 
 import { createAppContainer } from "react-navigation";
 
-
 import SplashScreen from './src/screens/Splash';
-import Onboard from './src/screens/Onboarding'
-import Onboard1 from './src/screens/onboarding/Onboard1'
+import Onboard from './src/screens/onboarding/Onboarding'
+import Onboard1 from './src/screens/onboarding/onboarding1/Onboard1'
 
 import AppNavigator from './BitmamaNavigator';
 
@@ -19,7 +18,7 @@ export default class App extends Component {
     //     <Onboard />
     //   </View>
     // );
-    return <AppContainer />;
+    return (<View style={{ flex: 1 }}><AppContainer /></View>);
   }
 }
 
