@@ -5,7 +5,7 @@ import { Button, Text } from 'native-base'
 
 export default class Onboard3Subtitle extends Component {
     onPress = () => {
-        this.props.nav.navigate('SignupGoogle');
+        this.props.nav.navigate('AlternativeSignup');
     }
     render() {
         return (
