@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Alert } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { Button, Text } from 'native-base'
 
 
@@ -11,7 +11,7 @@ import { colors } from './../../constants/styles';
 
 const fingerprintImg = require('./../../../assets/fingerprint.png');
 
-export default class SignupTouchId extends Component {
+export default class SignupFaceId extends Component {
     constructor(props) {
         super(props);
         this.leftPressed = this.leftPressed.bind(this);
@@ -27,27 +27,23 @@ export default class SignupTouchId extends Component {
         this.props.navigation.navigate('SignupFaceId');
     }
 
-
     render() {
         //top,bottom,overlay
         return (
             <View style={{ flex: 1 }}  >
-                <Top leftText="SET TOUCH ID" rightText="SET FACIAL ID" leftPressed={this.leftPressed} rightPressed={this.rightPressed} />
+                <Top leftText="SET TOUCH ID" rightText="SET FACIAL ID" rightActive={true} leftPressed={this.leftPressed} rightPressed={this.rightPressed} />
                 <Overlay>
-                    <View style={{ flex: 2.5, justifyContent: 'center', alignItems: 'center' }}>
-                        <Image source={fingerprintImg} style={{ width: 100, height: 100, marginTop: 30 }} />
+                    <View style={{ justifyContent: 'center', alignItems: 'center', height: 250 }}>
                     </View>
-                    <View style={{ flex: 2, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-                        <Text style={{ textAlign: 'center' }}> Repeatedly place your finger on the fingerprint radar and
-                            lift it when you feel the vibration. Or use traditional PIN
-                        </Text>
-                    </View>
-
                 </Overlay>
                 <Bottom>
+                    <View style={{ fontSize: 12 }}>
+                        <Text style={styles.centerText}>Please put your phone in front of your face</Text>
+                        <Text style={styles.centerText}>Or use traditional PIN</Text>
+                    </View>
                     <Button success block style={{ margin: 20 }}
                         onPress={this.onPress} >
-                        <Text style={{ textAlign: "center" }}>SIGN UP</Text>
+                        <Text style={{ textAlign: "center" }}>SCAN TO START</Text>
                     </Button>
 
                 </Bottom>
@@ -70,5 +66,9 @@ const styles = StyleSheet.create({
     },
     bottom: {
         flex: 3,
+    },
+    centerText: {
+        textAlign: 'center',
+        fontSize: 13.5,
     }
 });

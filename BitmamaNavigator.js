@@ -6,7 +6,7 @@ import Onboard from './src/screens/onboarding/Onboarding';
 import Splash from './src/screens/Splash';
 import SignupGoogle from './src/screens/auth/SignupGoogle';
 import SignupTouchId from './src/screens/auth/SignupTouchId';
-import AlternativeSignup from './src/screens/auth/AlternativeSignup'
+import SignupFaceId from './src/screens/auth/SignupFaceId';
 
 const AppNavigator = createStackNavigator({
     Onboard: {
@@ -21,12 +21,12 @@ const AppNavigator = createStackNavigator({
     SignupTouchId: {
         screen: SignupTouchId
     },
+    SignupFaceId: {
+        screen: SignupFaceId
+    },
 
-    AlternativeSignup: {
-        screen: AlternativeSignup
-    }
 },
     {
-        initialRouteName: "Splash"
+        initialRouteName: "SignupTouchId"
     });
 export default AppNavigator;

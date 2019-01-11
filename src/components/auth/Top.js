@@ -7,12 +7,6 @@ import { colors } from './../../constants/styles';
 const logoWhite = require('./../../../assets/bit-logo-white.png')
 
 export default class Top extends Component {
-    leftPressed() {
-        Alert.alert('heyyyy left');
-    }
-    rightPressed() {
-        Alert.alert('heyyyy right');
-    }
 
     render() {
         //top,bottom,overlay
@@ -23,14 +17,14 @@ export default class Top extends Component {
 
         let leftView = leftText && (<View>
             <Button transparent style={{ color: colors.light, paddingLeft: 50 }}
-                onPress={this.leftPressed}>
+                onPress={this.props.leftPressed}>
                 <Text style={leftStyle}>{leftText}</Text>
             </Button>
         </View>);
 
         let rightView = rightText && (<View>
             <Button transparent style={{ color: colors.light, paddingRight: 50 }}
-                onPress={this.rightPressed}>
+                onPress={this.props.rightPressed}>
                 <Text style={rightStyle}>{rightText}</Text>
             </Button>
         </View>);
