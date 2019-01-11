@@ -20,7 +20,7 @@ export default class AlternativeSignup extends Component {
         //top,bottom,overlay
         return (
             <View style={{ flex: 1 }}  >
-                <AlternativeTop />
+                <Top />
                 {/* <Overlay />
                 <Bottom /> */}
             </View>

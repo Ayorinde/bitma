@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Dimensions } from 'react-native';
 
 import Top from './../../components/auth/Top';
 import Bottom from './../../components/auth/Bottom';
 import Overlay from './../../components/auth/Overlay';
 
 import { colors } from './../../constants/styles';
+
+const winHeight = Dimensions.get("window").height;
+const winWidth = Dimensions.get("window").width;
 
 export default class TouchIdSignup extends Component {
     static navigationOptions = {
