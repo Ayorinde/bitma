@@ -27,6 +27,6 @@ const AppNavigator = createStackNavigator({
 
 },
     {
-        initialRouteName: "SignupTouchId"
+        initialRouteName: "Splash"
     });
 export default AppNavigator;
