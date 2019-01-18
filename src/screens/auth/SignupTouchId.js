@@ -16,6 +16,7 @@ export default class SignupTouchId extends Component {
         super(props);
         this.leftPressed = this.leftPressed.bind(this);
         this.rightPressed = this.rightPressed.bind(this);
+        this.onSignupPressed = this.onSignupPressed.bind(this);
     }
     static navigationOptions = {
         header: null,
@@ -25,6 +26,9 @@ export default class SignupTouchId extends Component {
     }
     rightPressed() {
         this.props.navigation.navigate('SignupFaceId');
+    }
+    onSignupPressed() {
+        this.props.navigation.navigate('Home');
     }
 
 
@@ -46,7 +50,7 @@ export default class SignupTouchId extends Component {
                 </Overlay>
                 <Bottom>
                     <Button success block style={{ margin: 20 }}
-                        onPress={this.onPress} >
+                        onPress={this.onSignupPressed} >
                         <Text style={{ textAlign: "center" }}>SIGN UP</Text>
                     </Button>
 
