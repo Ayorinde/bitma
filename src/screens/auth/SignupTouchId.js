@@ -26,6 +26,9 @@ export default class SignupTouchId extends Component {
     rightPressed() {
         this.props.navigation.navigate('SignupFaceId');
     }
+    onPress() {
+        this.props.navigation.navigate('SignupGoogle')
+    }
 
 
     render() {
