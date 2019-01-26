@@ -14,7 +14,6 @@ export default class WalletTab extends Component {
         return (
             <View>
                 <Text>Wallet Tab baba ...  wallet tab</Text>
-
             </View>
         )
     }
