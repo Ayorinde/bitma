@@ -1,9 +1,9 @@
 
-import register from './register';
+// import register from './register';
 
 
-export default combineReducers({
+// export default combineReducers({
   
-  register,
+//   register,
   
-});
+// });

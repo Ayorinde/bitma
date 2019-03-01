@@ -8,9 +8,9 @@ import Bottom from './../../components/auth/Bottom';
 import Overlay from './../../components/auth/Overlay';
 
 import { colors } from './../../constants/styles';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {onRegister} from '../store/actions/register';
+// import {connect} from 'react-redux';
+// import {bindActionCreators} from 'redux';
+// import {onRegister} from '../store/actions/register';
 
 const googleIcon = require('./../../../assets/googleIcon.png');
 
@@ -48,7 +48,7 @@ class Signup extends Component {
           return;
         }
        
-        this.props.onRegister(firstname,lastname,phone,email,password,c_password)
+        // this.props.onRegister(firstname,lastname,phone,email,password,c_password)
       };
 
     render() {
@@ -70,7 +70,7 @@ class Signup extends Component {
                             <Label>Last Name</Label>
                             <Input type="text"  name="lastname"
                       id="lastname" value={lastname}
-                     // onChangeText={this.onEnter}
+                     onChangeText={this.onEnter}
                       required />
                         </Item>
                         <Item floatingLabel style={styles.item}>
@@ -139,10 +139,11 @@ const styles = StyleSheet.create({
 
 });
 
-const mapStateToProps = state => ({register: state.register});
+// const mapStateToProps = state => ({register: state.register});
 
-const mapDispatchToProps = (dispatch) => ({
-  onRegister: bindActionCreators (onRegister, dispatch),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   onRegister: bindActionCreators (onRegister, dispatch),
+// });
 
-export default connect (mapStateToProps, mapDispatchToProps) (Signup);
+// connect (mapStateToProps, mapDispatchToProps)
+export default  Signup;

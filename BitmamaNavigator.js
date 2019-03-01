@@ -104,7 +104,7 @@ const AppNavigator = createStackNavigator({
 
 },
     {
-        initialRouteName: "Onboard",
+        initialRouteName: "SignUp",
         defaultNavigationOptions: {
             header: null
         }
