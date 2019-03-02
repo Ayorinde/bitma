@@ -12,6 +12,7 @@ import Splash from './src/screens/Splash';
 import SignupGoogle from './src/screens/auth/SignupGoogle';
 import SignupTouchId from './src/screens/auth/SignupTouchId';
 import SignupFaceId from './src/screens/auth/SignupFaceId';
+import SignUp from './src/screens/auth/SignUp'
 
 import Home from './src/screens/main/Home';
 
@@ -113,6 +114,9 @@ const AppNavigator = createStackNavigator({
     SignupGoogle: {
         screen: SignupGoogle
     },
+    SignUp: {
+        screen: SignUp
+    },
     SignupTouchId: {
         screen: SignupTouchId
     },
@@ -125,7 +129,7 @@ const AppNavigator = createStackNavigator({
 
 },
     {
-        initialRouteName: "Home",
+        initialRouteName: "Splash",
         defaultNavigationOptions: {
             header: null
         }
