@@ -16,7 +16,6 @@ export default class WalletTab extends Component {
     render() {
         const { navigation } = this.props;
         return (
-<<<<<<< HEAD
             <View style={styles.container}>
                 <View style={styles.upper16}>
                     <HeaderW />
@@ -65,10 +64,6 @@ export default class WalletTab extends Component {
                 </View>
 
 
-=======
-            <View>
-                <Text>Wallet Tab baba ...  wallet tab</Text>
->>>>>>> 059cdd6d55f7d152f79142525a658af07d6cab62
             </View>
         )
     }
