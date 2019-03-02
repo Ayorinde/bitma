@@ -40,7 +40,7 @@ export default class WalletTab extends Component {
                                         <Image style={styles.coinImage} source={require('./../../../assets/ethereum.png')} />
                                     </View>
                                     <View style={styles.coinFigures}>
-                                        <Text style={styles.bold}>N70,000:35k</Text>
+                                        <Text style={styles.bold}>N72,000:35k</Text>
                                         <Text>0.001201</Text>
                                     </View>
                                 </View>
