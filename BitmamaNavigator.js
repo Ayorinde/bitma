@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import {
     createStackNavigator, createBottomTabNavigator, createDrawerNavigator,
     createAppContainer
@@ -20,7 +20,7 @@ import SendTab from './src/screens/bottomTabs/SendTab';
 import WalletTab from './src/screens/bottomTabs/WalletTab';
 import ReceiveTab from './src/screens/bottomTabs/ReceiveTab';
 
-import { colors } from './src/constants/styles'
+import { colors } from './src/constants/styles';
 
 const HomeTabStack = createStackNavigator({
     Home: {
@@ -37,11 +37,36 @@ const HomeTabStack = createStackNavigator({
                     backgroundColor: colors.primary,
                 }
 
-
             }
         },
         navigationOptions: {
             tabBarIcon: <Icon name="home" style={{ color: 'rgba(255,255,255,0.5)' }} />,
+            headerStyle: {
+                backgroundColor: colors.primary,
+            }
+        }
+    })
+
+const WalletTabStack = createStackNavigator({
+    Home: {
+        screen: WalletTab
+    }
+}, {
+        defaultNavigationOptions: ({ navigation }) => {
+            return {
+                headerLeft: (<Icon ios='ios-menu' android="md-menu"
+                    style={{ fontSize: 20, color: 'white', padding: 10 }}
+                    onPress={() => navigation.openDrawer()} />),
+                headerRight: <Icon type="FontAwesome" name="bell" style={{ color: 'white', fontSize: 22, padding: 10 }} />,
+                headerStyle: {
+                    backgroundColor: colors.primary,
+                }
+
+
+            }
+        },
+        navigationOptions: {
+            tabBarIcon: <Image source={require('./assets/wallet.png')} />,
             headerStyle: {
                 backgroundColor: colors.primary,
             }
