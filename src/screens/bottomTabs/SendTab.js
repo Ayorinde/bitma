@@ -50,7 +50,7 @@ export default class SendTab extends Component {
                             </Button>
 
                             <Button success style={{ width: 130, borderRadius: 10, marginTop: 30 }}>
-                                <Text style={{ textAlign: 'center' }}>Save</Text>
+                                <Text style={{ textAlign: 'center' }}>Send</Text>
                             </Button>
                         </View>
 

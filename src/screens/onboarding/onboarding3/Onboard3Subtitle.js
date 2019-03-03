@@ -5,7 +5,7 @@ import { Button, Text } from 'native-base'
 
 export default class Onboard3Subtitle extends Component {
     onPress = () => {
-        this.props.nav.navigate('SignupTouchId');
+        this.props.nav.navigate('Home');
     }
     render() {
         return (
