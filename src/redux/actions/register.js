@@ -3,16 +3,16 @@ import { apiUrl } from './../../constants/globals';
 
 import { REGISTER_PENDING, REGISTER_FULFILLED, REGISTER_REJECTED } from './types';
 
-const authPath = '/auth/user';
+const authPath = '/user';
 const authUrl = `${apiUrl}${authPath}`;
 
-
-export function register({ firstname, lastname, email, password, phone }) {
+export function register(userObj) {
     return (dispatch) => {
         dispatch({ type: REGISTER_PENDING });
-        return axios.post(authUrl, { firstname, lastname, email, password, phone })
+        console.log('userObj in register action: ', userObj)
+        return axios.post(authUrl, userObj)
             .then(function (response) {
-                console.log(response);
+                console.log('registered successfully: ', response);
                 dispatch({ type: REGISTER_FULFILLED, payload: response.data });
             })
             .catch(function (error) {
@@ -20,6 +20,5 @@ export function register({ firstname, lastname, email, password, phone }) {
                 console.log(error);
                 dispatch({ type: REGISTER_REJECTED, payload: error });
             });
-
     }
 }

@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { onRegister } from '../../store/actions/register'
+//import { onRegister } from '../../store/actions/register'
+import { register } from "../../redux/actions/register";
 
 
 import { StyleSheet, View, Image } from 'react-native';
@@ -28,7 +29,8 @@ class Signup extends Component {
             phone: "",
             email: "",
             password: "",
-            c_password: ""
+            c_password: "",
+            country: "Nigeria"
         }
 
     }
@@ -46,19 +48,18 @@ class Signup extends Component {
         });
     };
 
-    onPress = () => {
+    onSignupPress = () => {
         const { firstname, lastname, phone, password, c_password, email } = this.state;
-        if (password !== c_password) {
-
-            return;
-        }
-
-        // this.props.onRegister(firstname,lastname,phone,email,password,c_password)
+        console.log('this.state: ', this.state);
+        alert(JSON.stringify(this.state, null, 4))
+        //if (password !== c_password) {return}
+        this.props.register(this.state);
     };
 
     render() {
         //top,bottom,overlay
-        const { firstname, lastname, phone, email, password, c_password } = this.state;
+        const { firstname, lastname, phone, email, password,
+            country, c_password } = this.state;
         return (
             <View style={{ flex: 1 }}  >
                 <Top leftText="SIGN UP" />
@@ -85,10 +86,21 @@ class Signup extends Component {
                                 onChangeText={this.onEnter.bind(null, 'email')}
                                 required />
                         </Item>
-                        {/* <Item floatingLabel style={styles.item}>
+                        <Item floatingLabel style={styles.item}>
                             <Label>Phone</Label>
-                            <Input />
+                            <Input type="phone" name="phone"
+                                value={phone}
+                                onChangeText={this.onEnter.bind(null, 'phone')}
+                                required />
+                        </Item>
+                        {/* <Item floatingLabel style={styles.item}>
+                            <Label>Country</Label>
+                            <Input type="text" name="country"
+                                id="country" value={country}
+                                onChangeText={this.onEnter.bind(null, 'country')}
+                                required />
                         </Item> */}
+
                         <Item floatingLabel style={styles.item}>
                             <Label>Password</Label>
                             <Input type="password" name="password"
@@ -105,7 +117,7 @@ class Signup extends Component {
                 <Bottom>
                     <View>
                         <Button success block style={{ margin: 10 }}
-                            onPress={this.onPress} >
+                            onPress={this.onSignupPress} >
                             <Text style={{ textAlign: "center" }}>Sign up</Text>
                         </Button>
                         <View style={{ marginHorizontal: 10, paddingBottom: 10 }}>
@@ -146,9 +158,9 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({ register: state.register });
 
-const mapDispatchToProps = (dispatch) => ({
-    onRegister: bindActionCreators(onRegister, dispatch),
-});
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return bindActionCreators({ register }, dispatch)
+}
 
 // connect (mapStateToProps, mapDispatchToProps)
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
