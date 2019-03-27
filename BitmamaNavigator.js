@@ -129,7 +129,7 @@ const AppNavigator = createStackNavigator({
 
 },
     {
-        initialRouteName: "Home",
+        initialRouteName: "SignUp",
         defaultNavigationOptions: {
             header: null
         }
