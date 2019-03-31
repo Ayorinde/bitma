@@ -35,3 +35,17 @@ code: 200, status: "success",…}
 code: 200
 status: "success"
 token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjOWFlMmFhZWI1MjM0NzVhMmZkNTk4ZSIsImVtYWlsIjoia3Vkb3JvYXlvcmluZGVAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwYXJ0bmVyIjpmYWxzZSwidmVyaWZpZWQiOnRydWUsImxvY2siOjAsImFjdGl2ZSI6dHJ1ZSwiaWF0IjoxNTUzNjU2MjkzLCJleHAiOjE1NTM2NTk4OTN9.CHlr0gMooe5EZTmnaOSQJ43MSYcDSACpweDi9UQxDqk"
+
+testone1@gmail.com,
+08031000000
+
+signup:
+response
+
+code:200,
+id:"5ca06fca5cf01873b8abc677"
+status:"success"
+
+testone01@gmail.com 08000000100
+id: 5ca08640eb523475a2fd59a4
+02: 5ca087cceb523475a2fd59a5

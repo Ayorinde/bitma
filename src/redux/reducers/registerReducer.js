@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   fetched: false,
   isLoggedIn: false,
   response: [],
-  error: {}
+  error: null,
 };
 
 const register = (state = INITIAL_STATE, action) => {
@@ -23,7 +23,8 @@ const register = (state = INITIAL_STATE, action) => {
         fetching: false,
         fetched: true,
         isLoggedIn: true,
-        response: action.payload
+        response: action.payload,
+        error: null,
       };
     }
     case REGISTER_REJECTED: {
@@ -31,6 +32,7 @@ const register = (state = INITIAL_STATE, action) => {
         ...state,
         fetching: false,
         fetched: false,
+        isLoggedIn: false,
         error: action.payload
       };
     }

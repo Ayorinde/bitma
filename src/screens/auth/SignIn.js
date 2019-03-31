@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-//import { onRegister } from '../../store/actions/register'
 import { register } from "../../redux/actions/register";
-
 
 import { StyleSheet, View, Image } from 'react-native';
 import { Form, Item, Label, Input, Button, Text } from 'native-base';
@@ -19,25 +17,15 @@ import { colors } from './../../constants/styles';
 
 const googleIcon = require('./../../../assets/googleIcon.png');
 
-class Signup extends Component {
+class Signin extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            firstname: "",
-            lastname: "",
             phone: "",
             email: "",
             password: "",
-            c_password: "",
-            country: "Nigeria",
-
-            signedUp: false,
-            isLoggedIn: false,
-            response: null,
-            error: '',
         }
-
     }
     static navigationOptions = {
         header: null,
@@ -47,86 +35,49 @@ class Signup extends Component {
         console.log('val: ', value);
         console.log('name: ', name);
 
-
         this.setState({
             [name]: value,
         });
     };
 
-    onSignupPress = async () => {
-        //const { firstname, lastname, phone, password, c_password, email } = this.state;
-        const { register, isLoggedIn, fetching, response, error,
-            navigation } = this.props;
+    onSigninPress = async () => {
+        const { phone, password, email } = this.state;
+        //const { register, isLoggedIn, fetching, response, navigation } = this.props;
         console.log('this.state: ', this.state);
-        //alert(JSON.stringify(this.state, null, 4))
+        alert(JSON.stringify(this.state, null, 4))
         //if (password !== c_password) {return}
+
+        /*
         await register(this.state);
         console.log('after signup...')
-        if (!this.state.fetching) {
+        if (!fetching) {
             console.log('done fetching...');
-            if (this.state.error) {
-                console.log('error signing up: ', this.state.error)
+            if (error) {
+                console.log('error signing up: ', error)
             }
             else {
-                const { isLoggedIn, response } = this.state;
                 console.log('successfully signed up: ', isLoggedIn);
-
                 if (isLoggedIn) {
                     console.log('response: ', response);
-                    //code:200,id:"5ca06fca5cf01873b8abc677"status:"success"
-                    navigation.navigate('SignIn', response)
+                    navigation.navigate('', response)
                 }
             }
         }
+        */
     };
-    componentDidUpdate(prevProps, prevState) {
-        const { isLoggedIn, fetching, error, response } = this.props;
-        if (prevProps.isLoggedIn !== isLoggedIn ||
-            prevProps.error !== error || prevProps.response !== response) {
-            console.log(`isLoggedIn: ${isLoggedIn} 
-                response: ${JSON.stringify(response)}
-                error: ${JSON.stringify(error)}`);
-            console.log('above in cdu')
-
-            this.setState({
-                isLoggedIn, error, response
-            })
-
-        }
-        //const {} = prevState;
-    }
 
     render() {
         //top,bottom,overlay
-        let { firstname, lastname, phone, email, password,
-            country, c_password,
-            error } = this.state;
+        const { phone, email, password } = this.state;
+        console.log('props: ', this.props);
 
-        let errorMessage = error && error.toString();
-
+        const { params } = this.props.navigation.state;
+        console.log('navigation.state.params: ', params);
         return (
             <View style={{ flex: 1 }}  >
-                <Top leftText="SIGN UP" />
+                <Top leftText="SIGN IN" />
                 <Overlay>
                     <Form >
-                        <Text>
-                            {error && (<Text>{errorMessage && errorMessage.substr(6, 30)}</Text>)}
-                        </Text>
-                        <Item floatingLabel style={styles.item}>
-
-                            <Label>First Name</Label>
-                            <Input type="text" name="firstname"
-                                id="firstname" value={firstname}
-                                onChangeText={this.onEnter.bind(null, 'firstname')}
-                                required />
-                        </Item>
-                        <Item floatingLabel style={styles.item}>
-                            <Label>Last Name</Label>
-                            <Input type="text" name="lastname"
-                                id="lastname" value={lastname}
-                                onChangeText={this.onEnter.bind(null, 'lastname')}
-                                required />
-                        </Item>
                         <Item floatingLabel style={styles.item}>
                             <Label>Email Address</Label>
                             <Input type="email" name="email"
@@ -141,14 +92,6 @@ class Signup extends Component {
                                 onChangeText={this.onEnter.bind(null, 'phone')}
                                 required />
                         </Item>
-                        {/* <Item floatingLabel style={styles.item}>
-                            <Label>Country</Label>
-                            <Input type="text" name="country"
-                                id="country" value={country}
-                                onChangeText={this.onEnter.bind(null, 'country')}
-                                required />
-                        </Item> */}
-
                         <Item floatingLabel style={styles.item}>
                             <Label>Password</Label>
                             <Input type="password" name="password"
@@ -156,26 +99,20 @@ class Signup extends Component {
                                 onChangeText={this.onEnter.bind(null, 'password')}
                                 required />
                         </Item>
-                        {/* <Item floatingLabel style={styles.item}>
-                            <Label>Confirm Password</Label>
-                            <Input />
-                        </Item> */}
                     </Form>
-
                 </Overlay>
                 <Bottom>
                     <View>
                         <Button success block style={{ margin: 10 }}
-                            onPress={this.onSignupPress} >
-                            <Text style={{ textAlign: "center" }}>Sign up</Text>
+                            onPress={this.onSigninPress} >
+                            <Text style={{ textAlign: "center" }}>Log In</Text>
                         </Button>
                         <View style={{ marginHorizontal: 10, paddingBottom: 10 }}>
-                            <Text style={{ color: colors.darkText }}>Already have an account?
-                        <Text style={{ textDecorationLine: 'underline' }}> Sign in</Text>
+                            <Text style={{ color: colors.darkText }}>Don't have an account?
+                        <Text style={{ textDecorationLine: 'underline' }}> Sign up</Text>
                             </Text>
                         </View>
                     </View>
-
                 </Bottom>
             </View>
         );
@@ -207,7 +144,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
     console.log('state.register: ', state.register)
-    let { isLoggedIn, fetching, error, response } = state.register
+    let { isLoggedIn, fetching, error } = state.register
     //const {  } = state.register;
     return { isLoggedIn, fetching, error };
 };
@@ -217,4 +154,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 // connect (mapStateToProps, mapDispatchToProps)
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
