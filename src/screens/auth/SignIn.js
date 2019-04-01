@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { register } from "../../redux/actions/register";
+import { login } from "../../redux/actions/login";
 
 import { StyleSheet, View, Image } from 'react-native';
 import { Form, Item, Label, Input, Button, Text } from 'native-base';
@@ -22,9 +22,15 @@ class Signin extends Component {
         super(props);
 
         this.state = {
-            phone: "",
+            //phone: "",
             email: "",
             password: "",
+            shouldRemember: false,
+
+            isLoggedIn: false,
+            response: null,
+            error: '',
+
         }
     }
     static navigationOptions = {
@@ -41,35 +47,52 @@ class Signin extends Component {
     };
 
     onSigninPress = async () => {
-        const { phone, password, email } = this.state;
-        //const { register, isLoggedIn, fetching, response, navigation } = this.props;
+        const { password, email, shouldRemember,
+            fetching, error, isLoggedIn, response } = this.state;
+        const { login, navigation } = this.props;
         console.log('this.state: ', this.state);
         alert(JSON.stringify(this.state, null, 4))
-        //if (password !== c_password) {return}
 
-        /*
-        await register(this.state);
-        console.log('after signup...')
+
+        await login(this.state);
+        console.log('after login...')
         if (!fetching) {
             console.log('done fetching...');
             if (error) {
-                console.log('error signing up: ', error)
+                console.log('error logging up: ', error)
             }
             else {
-                console.log('successfully signed up: ', isLoggedIn);
+                console.log('successfully logged up: ', isLoggedIn);
                 if (isLoggedIn) {
                     console.log('response: ', response);
-                    navigation.navigate('', response)
+                    navigation.navigate('Home', response)
                 }
             }
         }
-        */
+
     };
+
+    componentDidUpdate(prevProps, prevState) {
+        const { isLoggedIn, fetching, error, response } = this.props;
+        if (prevProps.isLoggedIn !== isLoggedIn ||
+            prevProps.error !== error || prevProps.response !== response) {
+            console.log(`isLoggedIn: ${isLoggedIn} 
+                response: ${JSON.stringify(response)}
+                error: ${JSON.stringify(error)}`);
+            console.log('above in cdu')
+
+            this.setState({
+                isLoggedIn, error, response
+            })
+        }
+    }
 
     render() {
         //top,bottom,overlay
-        const { phone, email, password } = this.state;
+        const { email, password, error } = this.state;
         console.log('props: ', this.props);
+
+        let errorMessage = error && error.toString();
 
         const { params } = this.props.navigation.state;
         console.log('navigation.state.params: ', params);
@@ -78,18 +101,15 @@ class Signin extends Component {
                 <Top leftText="SIGN IN" />
                 <Overlay>
                     <Form >
+                        <Text>
+                            {error && (<Text>{errorMessage && errorMessage.substr(6, 30)}</Text>)}
+                        </Text>
+
                         <Item floatingLabel style={styles.item}>
                             <Label>Email Address</Label>
                             <Input type="email" name="email"
                                 id="email" value={email}
                                 onChangeText={this.onEnter.bind(null, 'email')}
-                                required />
-                        </Item>
-                        <Item floatingLabel style={styles.item}>
-                            <Label>Phone</Label>
-                            <Input type="phone" name="phone"
-                                value={phone}
-                                onChangeText={this.onEnter.bind(null, 'phone')}
                                 required />
                         </Item>
                         <Item floatingLabel style={styles.item}>
@@ -143,14 +163,14 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-    console.log('state.register: ', state.register)
-    let { isLoggedIn, fetching, error } = state.register
-    //const {  } = state.register;
+    console.log('state.login: ', state.login)
+    let { isLoggedIn, fetching, error } = state.login
+    //const {  } = state.login;
     return { isLoggedIn, fetching, error };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return bindActionCreators({ register }, dispatch)
+    return bindActionCreators({ login }, dispatch)
 }
 
 // connect (mapStateToProps, mapDispatchToProps)
