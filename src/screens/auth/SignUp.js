@@ -110,7 +110,7 @@ class Signup extends Component {
                 <Overlay>
                     <Form >
                         <Text>
-                            {error && (<Text>{errorMessage && errorMessage.substr(6, 30)}</Text>)}
+                            {error && (<Text>{errorMessage && errorMessage.substr(6, 37)}</Text>)}
                         </Text>
                         <Item floatingLabel style={styles.item}>
 

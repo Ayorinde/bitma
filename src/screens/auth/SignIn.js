@@ -51,10 +51,10 @@ class Signin extends Component {
             fetching, error, isLoggedIn, response } = this.state;
         const { login, navigation } = this.props;
         console.log('this.state: ', this.state);
-        alert(JSON.stringify(this.state, null, 4))
+        alert(JSON.stringify({ email, password }, null, 4))
 
 
-        await login(this.state);
+        await login({ email, password });
         console.log('after login...')
         if (!fetching) {
             console.log('done fetching...');
@@ -102,7 +102,7 @@ class Signin extends Component {
                 <Overlay>
                     <Form >
                         <Text>
-                            {error && (<Text>{errorMessage && errorMessage.substr(6, 30)}</Text>)}
+                            {error && (<Text>{errorMessage && errorMessage.substr(6, 37)}</Text>)}
                         </Text>
 
                         <Item floatingLabel style={styles.item}>
